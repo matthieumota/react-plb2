@@ -29,7 +29,15 @@
         }
 
         function Exo2() {
-            const notes = [0, 4, 10, 20, 15];
+            const nextId = 1;
+            const notes = [
+                // { id: crypto.randomUUID(), value: 0 },
+                // { id: crypto.randomUUID(), value: 4 },
+                // { id: crypto.randomUUID(), value: 10 },
+                // { id: crypto.randomUUID(), value: 20 },
+                // { id: crypto.randomUUID(), value: 15 },
+                0, 4, 10, 20, 15
+            ];
 
             const person = {
                 firstname: 'Boulette',
@@ -38,10 +46,13 @@
             };
 
             const actionsList = (
-                <div>
-                    <button>Modifier</button>
-                    <button>Annuler</button>
-                </div>
+                <>
+                    ||
+                    <div>
+                        <button>Modifier</button>
+                        <button>Annuler</button>
+                    </div>
+                </>
             );
 
             return (
@@ -146,7 +157,11 @@
                     {JSON.stringify(shoppingCart)}
                     <ul>
                         {shoppingCart.map((item, index) =>
-                            <li key={index}>{item.name} {item.type ? <>({item.type})</> : null}</li>
+                            <>
+                                <li key={index}>{item.name} {item.type ? <>({item.type})</> : null}</li>
+                                <li key={index}>{item.name} {item.type ? `(${item.type})` : null}</li>
+                                <li key={index}>{item.name} {item.type ? '('+item.type+')' : null}</li>
+                            </>
                         )}
                     </ul>
                     <p>Afficher toutes les propriétés du catalogue de séries</p>
@@ -234,11 +249,11 @@
                         Après avoir consulté la documentation, afficher chat de manière conditionnelle seulement
                         si son nom est différent de "Ronron" et qu'il n'est pas nul et avec la notation &&
                     </p>
-                    {cat && cat.toLowerCase() !== 'ronron' && <p>{cat}</p>}
+                    {cat !== null && cat.toLowerCase() !== 'ronron' && <p>{cat}</p>}
                     <Cat cat={cat} />
                     <Cat cat="ronron" />
                     <Cat cat="çamarche" />
-                    <Cat cat={null} />
+                    <Cat cat="0" />
                     <p>
                         Afficher les propriétés de chaque personne à l'aide de map
                         Pour chaque personne afficher son âge de manière conditionnelle en utilisant ? et :
@@ -277,11 +292,9 @@
                                         <p>{vegetable.warehouse.name} - {vegetable.warehouse.size}</p>
                                     </div>
                                 ||
-                                    <div>
-                                        Inconnu
-                                    </div>
+                                    <div>Magasin inconnu</div>
                                 }
-                                {!vegetable.warehouse && <div>Inconnu</div>}
+                                {!vegetable.warehouse && <div>Magasin inconnu</div>}
                             </li>
                         )}
                     </ul>
