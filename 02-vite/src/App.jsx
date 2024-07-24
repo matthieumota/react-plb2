@@ -1,4 +1,5 @@
 import Button from './components/Button'
+import Text from './components/Text'
 
 function App() {
   return (
@@ -7,6 +8,7 @@ function App() {
       <Button emoji="🐈‍⬛">Envoyer</Button>
       <Button emoji="🐆">Valider</Button>
       <Button>Confirmer</Button>
+      <Text />
     </div>
   )
 }
