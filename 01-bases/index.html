@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Hello World</title>
+        <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+        <!-- Don't use this in production: -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script type="text/babel">
+            const App = () => {
+                const name = 'Fiorella';
+                const user = {
+                    firstName: 'Fiorella',
+                    lastName: 'Mota',
+                    avatar: 'https://i.pravatar.cc/100',
+                };
+    
+                // function fullName(user) {
+                //     return user.firstName + ' ' + user.lastName;
+                // }
+    
+                const fullName = (user) => user.firstName + ' ' + user.lastName;
+
+                const Welcome = ({ name, age }) => {
+                    const start = <>Bonjour {name ? name : 'Inconnu'}</>;
+
+                    // if (age) {
+                    //     return <h1>{start}, tu as {age} ans</h1>;
+                    // }
+
+                    return <h1>{start}{age > 0 && <>, tu as {age} ans</>}</h1>;
+                }
+
+                const peoples = [
+                    { id: 1, name: 'Marina' },
+                    { id: 2, name: 'Fiorella' },
+                    { id: 3, name: 'Matthieu' },
+                ];
+
+                return (
+                    <> {/* Ceci est un fragment */}
+                        <h1>Salut {fullName(user)}</h1>
+                        <img src={user.avatar} className="avatar" style={ { borderRadius: 50 } } alt={user.firstName} />
+                        <p>Il est {new Date().toLocaleTimeString()}</p>
+                        <Welcome name="Fiorella" age={4} />
+                        <Welcome name="Matthieu" />
+                        <Welcome />
+
+                        {/*JSON.stringify(peoples)*/}
+                        {/*[<li>Marina</li>, <li>Fiorella</li>, <li>Matthieu</li>]*/}
+                        {peoples.map((people, index) =>
+                            <li key={people.id}>
+                                {people.name}: Index {index}
+                            </li>
+                        )}
+                    </>
+                )
+            }
+
+            const container = document.getElementById('root');
+            const root = ReactDOM.createRoot(container);
+            root.render(<App />);
+            // setInterval(() => root.render(<App />), 1000);
+        </script>
+    </body>
+</html>
