@@ -14,15 +14,15 @@ function State2() {
   /**
    * Décrémente la valeur du compteur du state
    */
-  const decrementCounter = () => {
-    setCounter(counter - 1);
+  const decrementCounter = (value) => {
+    setCounter(counter - value);
   }
 
   /**
    * Remplace la valeur de text par "Baba"
    */
-  const replaceByBaba = () => {
-    setText('Baba')
+  const replaceByBaba = (newText) => {
+    setText(newText);
   }
 
   return (
@@ -38,13 +38,13 @@ function State2() {
       <div>
         <p>Remplir la fonction decrementCounter</p>
         <p>Créer un nouveau bouton "Retirer 1" qui va déclencher une fonction decrementCounter</p>
-        <button onClick={decrementCounter}>Retirer 1</button>
+        <button onClick={() => decrementCounter(1)}>Retirer 1</button>
       </div>
       <div>
         <p>Remplir la fonction replaceByBaba</p>
         <p>Créer un nouveau bouton Remplacer qui va déclencher une fonction replaceByBaba</p>
         <h2>{text}</h2>
-        <button onClick={replaceByBaba}>Remplacer</button>
+        <button onClick={() => replaceByBaba('Baba')}>Remplacer</button>
       </div>
     </div>
   )
