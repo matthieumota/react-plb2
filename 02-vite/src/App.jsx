@@ -1,5 +1,6 @@
 import Button from './components/Button'
 import Text from './components/Text'
+import State2 from './exercices/State2'
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Button emoji="🐆">Valider</Button>
       <Button>Confirmer</Button>
       <Text />
+      <State2 />
     </div>
   )
 }
