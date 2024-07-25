@@ -6,6 +6,7 @@ import EventListener3 from './exercices/EventListener3'
 import State2 from './exercices/State2'
 import StateChallenge from './exercices/StateChallenge'
 import Clock from './components/Clock'
+import Ajax from './components/Ajax'
 
 function App() {
   const [display, setDisplay] = useState(true);
@@ -21,6 +22,7 @@ function App() {
         Afficher / Cacher l'horloge
       </Button>
       {display && <Clock />}
+      <Ajax />
       <List />
       {/*<State2 />*/}
       <StateChallenge />
