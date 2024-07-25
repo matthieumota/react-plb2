@@ -11,6 +11,12 @@ function Ajax() {
       console.log('après');
     }).finally(() => setTimeout(() => setLoading(false), 500));
 
+    // axios.get('TAREQUETEAJAX').then(response => {
+    //   return axios.get('UNEAUTREREQUETEAJAX'+response.data.id)
+    // }).then(response => {
+
+    // })
+
     console.log('avant');
   }, []);
 
