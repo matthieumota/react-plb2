@@ -3,6 +3,7 @@ import Button from './Button';
 import ListItemEdit from './ListItem';
 
 let nextId = 4;
+const initialUser = { id: null, name: '', avatar: false };
 
 function List() {
   const [users, setUsers] = useState([
@@ -10,13 +11,20 @@ function List() {
     { id: 2, name: 'Titi', avatar: 'https://i.pravatar.cc/150?u=Titi' },
     { id: 3, name: 'Tata', avatar: 'https://i.pravatar.cc/150?u=Tata' },
   ]);
+  const [newUser, setNewUser] = useState(initialUser);
 
   const addUser = () => {
     // Ajout dans un tableau
     setUsers([
       ...users,
-      { id: nextId++, name: 'Tutu', avatar: 'https://i.pravatar.cc/150?u=Tutu' }
+      {
+        ...newUser,
+        id: nextId++,
+        avatar: newUser.avatar ? `https://i.pravatar.cc/150?u=${newUser.name}` : null
+      }
     ]);
+
+    setNewUser(initialUser);
   }
 
   const deleteUser = (id) => {
@@ -40,6 +48,13 @@ function List() {
     }))
   }
 
+  const handleChange = (value, field) => {
+    setNewUser({
+      ...newUser,
+      [field]: value // name: 'Blabla' ou avatar: true
+    });
+  }
+
   return (
     <>
       <ul>
@@ -50,11 +65,14 @@ function List() {
               <input type="text" value={user.name} onChange={(e) => editUser(user.id, e.target.value)} />
               <ListItemEdit item={user} onConfirm={(e) => editUser(user.id, e)} />
             </div>
-            <img src={user.avatar} alt={user.name} />
+            {user.avatar && <img src={user.avatar} alt={user.name} />}
             <Button onClick={() => deleteUser(user.id)}>Supprimer</Button>
           </li>
         )}
       </ul>
+      {JSON.stringify(newUser)}
+      <input type="text" value={newUser.name} onChange={(e) => handleChange(e.target.value, 'name')} />
+      <input type="checkbox" checked={newUser.avatar} onChange={(e) => handleChange(e.target.checked, 'avatar')} />
       <Button onClick={addUser}>Ajouter</Button>
     </>
   );
