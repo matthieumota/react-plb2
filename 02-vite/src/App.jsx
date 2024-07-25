@@ -2,6 +2,7 @@ import Button from './components/Button'
 import List from './components/List'
 import Text from './components/Text'
 import State2 from './exercices/State2'
+import StateChallenge from './exercices/StateChallenge'
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       <Button>Confirmer</Button>
       <Text />
       <List />
-      <State2 />
+      {/*<State2 />*/}
+      <StateChallenge />
     </div>
   )
 }
