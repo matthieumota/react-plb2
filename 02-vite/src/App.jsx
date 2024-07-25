@@ -1,6 +1,7 @@
 import Button from './components/Button'
 import List from './components/List'
 import Text from './components/Text'
+import EventListener3 from './exercices/EventListener3'
 import State2 from './exercices/State2'
 import StateChallenge from './exercices/StateChallenge'
 
@@ -15,6 +16,7 @@ function App() {
       <List />
       {/*<State2 />*/}
       <StateChallenge />
+      <EventListener3 />
     </div>
   )
 }
