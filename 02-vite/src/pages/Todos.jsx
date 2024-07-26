@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo, deleteTodo } from '../store';
-import { useState } from 'react';
+import { addTodo, allTodos, deleteTodo, loadTodos, toggleTodo } from '../store';
+import { useEffect, useMemo, useState } from 'react';
 
 function Todo({ todo }) {
   const dispatch = useDispatch();
@@ -8,6 +8,7 @@ function Todo({ todo }) {
   return (
     <li>
       {todo.name}
+      <input type="checkbox" checked={todo.done} onChange={(e) => dispatch(toggleTodo(todo.id))} />
 
       <button onClick={() => dispatch(deleteTodo(todo.id))}>X</button>
     </li>
@@ -32,13 +33,25 @@ const TodoForm = () => {
 }
 
 function Todos() {
-  const todos = useSelector(state => state.todo);
+  const todos = useSelector(allTodos);
+  const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
+  const count = useMemo(() => {
+    console.log('CALL');
+    return todos.length;
+  }, [todos]);
+
+  useEffect(() => {
+    dispatch(loadTodos())
+  }, [])
 
   return (
     <>
       <ul>
         {todos.map((todo) => <Todo todo={todo} key={todo.id} />)}
       </ul>
+      {count} todos
+      <button onClick={() => setShow(!show)}>Changer</button>
       <TodoForm />
     </>
   );
