@@ -7,6 +7,7 @@ function App() {
       <nav>
         <NavLink to="/">Accueil</NavLink>
         <NavLink to="/a-propos">A propos</NavLink>
+        <NavLink to="/films">Films</NavLink>
       </nav>
 
       <Outlet />
