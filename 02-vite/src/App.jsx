@@ -7,6 +7,8 @@ import State2 from './exercices/State2'
 import StateChallenge from './exercices/StateChallenge'
 import Clock from './components/Clock'
 import Ajax from './components/Ajax'
+import Lifecycle2 from './components/Lifecycle2'
+import Ajax1 from './components/Ajax1'
 
 function App() {
   const [display, setDisplay] = useState(true);
@@ -23,6 +25,8 @@ function App() {
       </Button>
       {display && <Clock />}
       <Ajax />
+      <Lifecycle2 />
+      <Ajax1 />
       <List />
       {/*<State2 />*/}
       <StateChallenge />
