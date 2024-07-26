@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useFetch } from '../hooks';
+import { NavLink } from 'react-router-dom'
 
 function Movies() {
   const [page, setPage] = useState(1);
@@ -21,7 +22,9 @@ function Movies() {
         {movies.map(movie =>
           <div>
             <h2>{movie.title}</h2>
-            <img src={movie.poster_path} alt={movie.title} />
+            <NavLink to={`/films/${movie.id}`}>
+              <img src={movie.poster_path} alt={movie.title} />
+            </NavLink>
           </div>
         )}
       </div>

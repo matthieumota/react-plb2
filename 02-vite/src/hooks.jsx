@@ -11,7 +11,10 @@ function useFetch(url) {
 
         axios.get(url).then(response => {
             setEnding(response.data.length === 0);
-            setData([...data, ...response.data]);
+            // Si la réponse est un tableau JSON
+            Array.isArray(response.data) && setData([...data, ...response.data]);
+            // Si la réponse est un objet JSON ou autre
+            !Array.isArray(response.data) && setData(response.data);
         }).finally(() =>
             setTimeout(() => setLoading(false), 500)
         );
