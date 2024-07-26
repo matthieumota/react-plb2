@@ -1,13 +1,18 @@
+import { useSelector } from 'react-redux';
 import { NavLink, Outlet } from 'react-router-dom'
 
 function App() {
+  const todos = useSelector(state => state.todo);
+
   return (
     <div>
       <h1>React + Vite</h1>
+      <h1>Tâches restantes: {todos.filter(t => !t.done).length}</h1>
       <nav>
         <NavLink to="/">Accueil</NavLink>
         <NavLink to="/a-propos">A propos</NavLink>
         <NavLink to="/films">Films</NavLink>
+        <NavLink to="/todos">Todos</NavLink>
       </nav>
 
       <Outlet />
